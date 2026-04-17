@@ -5,7 +5,7 @@ from trytond.modules.health.core import get_institution
 from trytond.pyson import PYSONEncoder
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import StateAction, Wizard
+from trytond.wizard import StateAction, StateReport, Wizard
 
 
 class OpenAppointmentCopagoServices(Wizard):
@@ -218,3 +218,20 @@ class GenerateAppointmentCopago(Wizard):
         Invoice.update_taxes([invoice])
         HealthService.write([service], {'state': 'invoiced'})
         return invoice
+
+
+class GenerateAppointmentCopagoPrint(GenerateAppointmentCopago):
+    'Generate Appointment Copago Print'
+    __name__ = 'wizard.gnuhealth.appointment.copago.print'
+
+    start_state = 'print_'
+    print_ = StateReport('account_invoice.report_invoice')
+
+    def do_print_(self, action):
+        service, invoice = self._generate_copago()
+        data = {
+            'id': invoice.id,
+            'ids': [invoice.id],
+            'model': 'account.invoice',
+        }
+        return action, data

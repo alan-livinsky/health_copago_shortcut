@@ -1,2 +1,5 @@
-from .copago import GenerateAppointmentCopago, OpenAppointmentCopagoServices
-
+from .copago import (
+    GenerateAppointmentCopago,
+    GenerateAppointmentCopagoPrint,
+    OpenAppointmentCopagoServices,
+)

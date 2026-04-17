@@ -7,4 +7,5 @@ def register():
     Pool.register(
         wizard.OpenAppointmentCopagoServices,
         wizard.GenerateAppointmentCopago,
+        wizard.GenerateAppointmentCopagoPrint,
         module='health_copago_shortcut', type_='wizard')

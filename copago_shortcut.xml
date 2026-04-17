@@ -22,6 +22,16 @@
             <field name="action" ref="act_generate_appointment_copago"/>
         </record>
 
+        <record model="ir.action.wizard" id="act_generate_appointment_copago_print">
+            <field name="name">Generar copago v3</field>
+            <field name="wiz_name">wizard.gnuhealth.appointment.copago.print</field>
+        </record>
+        <record model="ir.action.keyword" id="act_generate_appointment_copago_print_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">gnuhealth.appointment,-1</field>
+            <field name="action" ref="act_generate_appointment_copago_print"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_copago_patient_services">
             <field name="name">Services</field>
             <field name="res_model">gnuhealth.health_service</field>
