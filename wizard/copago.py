@@ -225,7 +225,7 @@ class GenerateAppointmentCopagoPrint(GenerateAppointmentCopago):
     __name__ = 'wizard.gnuhealth.appointment.copago.print'
 
     start_state = 'print_'
-    print_ = StateReport('account_invoice.report_invoice')
+    print_ = StateReport('account.invoice')
 
     def do_print_(self, action):
         service, invoice = self._generate_copago()
