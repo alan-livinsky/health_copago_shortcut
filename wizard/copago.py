@@ -82,7 +82,7 @@ class GenerateAppointmentCopago(Wizard):
 
         service, = HealthService.create([{
             'patient': patient.id,
-            'desc': 'copago',
+            'desc': 'Copago',
             'institution': get_institution(),
             'company': company_id,
             'service_date': today,
