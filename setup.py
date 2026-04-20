@@ -46,6 +46,7 @@ setup(
     package_dir={'trytond.modules.health_copago_shortcut': '.'},
     packages=[
         'trytond.modules.health_copago_shortcut',
+        'trytond.modules.health_copago_shortcut.report',
         'trytond.modules.health_copago_shortcut.wizard',
     ],
     package_data={
