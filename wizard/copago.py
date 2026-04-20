@@ -229,9 +229,20 @@ class GenerateAppointmentCopagoPrint(GenerateAppointmentCopago):
 
     def do_print_(self, action):
         service, invoice = self._generate_copago()
+        self._mark_appointment_copago_paid()
         data = {
             'id': invoice.id,
             'ids': [invoice.id],
             'model': 'account.invoice',
         }
         return action, data
+
+    @staticmethod
+    def _mark_appointment_copago_paid():
+        pool = Pool()
+        Appointment = pool.get('gnuhealth.appointment')
+
+        appointment = OpenAppointmentCopagoServices._get_appointment()
+        Appointment.write([appointment], {
+            'copago_paid': True,
+        })
