@@ -229,6 +229,7 @@ class GenerateAppointmentCopagoPrint(GenerateAppointmentCopago):
 
     def do_print_(self, action):
         service, invoice = self._generate_copago()
+        self._check_invoice_access(invoice)
         self._mark_appointment_copago_paid()
         data = {
             'id': invoice.id,
@@ -246,3 +247,9 @@ class GenerateAppointmentCopagoPrint(GenerateAppointmentCopago):
         Appointment.write([appointment], {
             'copago_paid': True,
         })
+
+    @staticmethod
+    def _check_invoice_access(invoice):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        Invoice.read([invoice.id], ['id'])
