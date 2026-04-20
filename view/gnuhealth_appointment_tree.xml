@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 
 <data>
-    <xpath expr="/tree/field[@name='state']" position="after">
+    <xpath expr="/tree/button[@name='no_show']" position="replace">
+    </xpath>
+    <xpath expr="/tree/field[@name='patient']" position="before">
+        <button name="no_show" help="The patient did not show up" string="No show"/>
+    </xpath>
+    <xpath expr="/tree/field[@name='healthprof']" position="after">
         <field name="copago_status"/>
     </xpath>
 </data>
