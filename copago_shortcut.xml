@@ -62,5 +62,9 @@
             <field name="act_window" ref="act_copago_invoice"/>
         </record>
 
+        <record model="ir.action.report" id="account_invoice.report_invoice">
+            <field name="report">health_copago_shortcut/report/invoice.fodt</field>
+        </record>
+
     </data>
 </tryton>

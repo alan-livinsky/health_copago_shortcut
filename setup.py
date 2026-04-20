@@ -50,7 +50,7 @@ setup(
     ],
     package_data={
         'trytond.modules.health_copago_shortcut': info.get('xml', [])
-        + ['tryton.cfg'],
+        + ['tryton.cfg', 'report/*.fodt'],
     },
     license='GPL-3',
     install_requires=requires,
