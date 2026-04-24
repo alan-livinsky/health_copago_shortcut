@@ -15,5 +15,5 @@ def register():
         wizard.GenerateAppointmentCopagoPrint,
         module='health_copago_shortcut', type_='wizard')
     Pool.register(
-        report.invoice.InvoiceReport,
+        report.invoice.CopagoInvoiceReport,
         module='health_copago_shortcut', type_='report')

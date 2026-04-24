@@ -63,7 +63,15 @@
         </record>
 
         <record model="ir.action.report" id="account_invoice.report_invoice">
+            <field name="report">account_invoice/invoice.fodt</field>
+        </record>
+
+        <record model="ir.action.report" id="report_copago_invoice">
+            <field name="name">Copago Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">health_copago_shortcut.invoice</field>
             <field name="report">health_copago_shortcut/report/invoice.fodt</field>
+            <field name="single" eval="True"/>
         </record>
 
     </data>

@@ -1,8 +1,8 @@
 from trytond.report import Report
 
 
-class InvoiceReport(Report):
-    __name__ = 'account.invoice'
+class CopagoInvoiceReport(Report):
+    __name__ = 'health_copago_shortcut.invoice'
 
     @classmethod
     def get_context(cls, records, header, data):
