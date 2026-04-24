@@ -31,9 +31,10 @@ class CopagoInvoiceReport(Report):
                 or '')
             return ('%s %s' % (number, symbol_text)).strip()
 
+        invoice = records[0] if records else None
+        context['invoice'] = invoice
+        context['ticket'] = cls._get_ticket_context(invoice, format_currency)
         context['format_number_symbol'] = format_number_symbol
-        context['ticket'] = cls._get_ticket_context(
-            records[0] if records else None, format_currency)
         return context
 
     @classmethod
