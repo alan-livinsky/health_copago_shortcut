@@ -94,6 +94,13 @@ class CopagoInvoiceReport(Report):
                     amount, invoice.party.lang, invoice.currency)
             return text(amount)
 
+        def format_date_value(value):
+            if not value:
+                return ''
+            if hasattr(value, 'strftime'):
+                return value.strftime('%d/%m/%Y')
+            return text(value)
+
         ticket_lines = [
             SimpleNamespace(
                 practice=practice_code(line),
@@ -133,9 +140,12 @@ class CopagoInvoiceReport(Report):
             observations=text(getattr(invoice, 'comment', None))
                 or text(getattr(appointment, 'comments', None)),
             date=getattr(invoice, 'invoice_date', None) or datetime.date.today(),
+            date_text=format_date_value(
+                getattr(invoice, 'invoice_date', None) or datetime.date.today()),
             voucher_number=text(getattr(invoice, 'number', None))
                 or text(getattr(invoice, 'id', None)),
             birth_date=getattr(party, 'dob', None),
+            birth_date_text=format_date_value(getattr(party, 'dob', None)),
             medical_record=medical_record(party),
             patient=rec_name(patient) or rec_name(party),
             lines=ticket_lines,

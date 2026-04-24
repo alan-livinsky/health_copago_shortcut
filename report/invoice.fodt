@@ -115,16 +115,17 @@
  </office:master-styles>
  <office:body>
   <office:text>
+   <text:p text:style-name="Command"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;ticket in tickets&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Title"><text:placeholder text:placeholder-type="text">&lt;ticket.institution&gt;</text:placeholder></text:p>
    <table:table table:name="Header" table:style-name="HeaderTable">
     <table:table-column table:style-name="HLeft"/>
     <table:table-column table:style-name="HRight"/>
-    <table:table-row>
+   <table:table-row>
      <table:table-cell table:style-name="Cell" office:value-type="string">
       <text:p text:style-name="Text">Programa Medico: <text:placeholder text:placeholder-type="text">&lt;ticket.medical_program&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Cell" office:value-type="string">
-      <text:p text:style-name="Text">Fecha: <text:placeholder text:placeholder-type="text">&lt;format_date(ticket.date, invoice.party.lang)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Text">Fecha: <text:placeholder text:placeholder-type="text">&lt;ticket.date_text&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -140,7 +141,7 @@
       <text:p text:style-name="Text">Nro Afiliado: <text:placeholder text:placeholder-type="text">&lt;ticket.affiliate_number&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Cell" office:value-type="string">
-      <text:p text:style-name="Text">Fecha Nac: <text:placeholder text:placeholder-type="text">&lt;format_date(ticket.birth_date, invoice.party.lang) if ticket.birth_date else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Text">Fecha Nac: <text:placeholder text:placeholder-type="text">&lt;ticket.birth_date_text&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -250,6 +251,7 @@
      </table:table-cell>
     </table:table-row>
    </table:table>
+   <text:p text:style-name="Command"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
   </office:text>
  </office:body>
 </office:document>
